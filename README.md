@@ -129,6 +129,7 @@ Karakteristik pelanggan yang telah menjadi "Attrited Customer" ini cukup beragam
 Jumlah tanggungan seorang nasabah cenderung mempengaruhi limit dari kartu kredit nasabah. Pada Gambar 3.2 dapat dilihat terdapat kenaikan dari jumlah tanggungannya 0 hingga 4. Namun, pada jumlah tanggunan 5 ini terdapat penurunan yang menjelaskan bahwa perlu dilakukan pengecekan pada variabel lain terkait hal ini.
 
 ![bar-5.jpg](https://i.ibb.co/02BgJnz/download-21.png)
+
 Gambar 3.2 Limit dari Kartu Kredit berdasarkan Jumlah Tanggungan Seorang Nasabah
 
 ## Data Preparation
@@ -183,19 +184,8 @@ Pada proses modeling (classfication), penulis melakukan berbagai tahapan untuk m
 4. Dua model terbaik tersebut dilakukan modeling terakhir dengan diperlakukan tuning hyperparameter. Dua model tersebut adalah XGB dengan Random Oversampling dan Random Forest dengan Random Oversampling.
 5. Model terbaik adalah XGB dengan Random Oversampling, dengan alasan memiliki Hasil Evaluasi yang lebih baik. Model XGBClassifier ini menggunakan parameter min_child_weight=1, gamma=1.5, colsample_bytree=0.8, max_depth=5.
 
-**Kelebihan dan kekurangan untuk setiap model**
-1. Decision Tree
-    Kelebihan:
-    - Mudah dipahami dan diinterpretasikan.
-    - Mampu menangani data numerik dan kategorikal.
-    - Dapat digunakan untuk melakukan feature selection.
-    - Tidak memerlukan preprocessing data yang rumit.
-    
-    Kekurangan:
-    - Rentan terhadap overfitting jika tidak diatur dengan baik.
-    - Tidak efektif dalam menangani masalah dengan banyak fitur berkorelasi.
-
-2. Random Forest
+**Kelebihan dan kekurangan untuk model yang dipilih**
+1. Random Forest
     Kelebihan:
     - Mengatasi masalah overfitting dengan menggunakan ensemble dari decision tree.
     - Mampu menangani data numerik dan kategorikal.
@@ -205,102 +195,11 @@ Pada proses modeling (classfication), penulis melakukan berbagai tahapan untuk m
     Kekurangan:
     - Lebih kompleks dibandingkan dengan decision tree tunggal.
     - Sulit untuk diinterpretasikan secara langsung karena terdiri dari banyak decision tree.
-
-3. Gaussian
-    Kelebihan:
-    - Sederhana dan efisien.
-    - Mampu menangani data dengan banyak fitur.
-    - Relatif tahan terhadap fitur yang tidak relevan.
-    
-    Kekurangan:
-    - Mengasumsikan independensi fitur yang kuat, yang tidak selalu terpenuhi dalam data nyata.
-    - Tidak dapat menangani hubungan kompleks antara fitur.
-
-4. KNN
-    Kelebihan:
-    - Sederhana dan mudah diimplementasikan.
-    - Tidak memerlukan asumsi tentang distribusi data.
-    - Dapat digunakan untuk masalah klasifikasi dan regresi.
-    
-    Kekurangan:
-    - Sensitif terhadap pemilihan parameter k (jumlah tetangga terdekat).
-    - Membutuhkan perhitungan jarak yang mahal secara komputasi jika dataset besar.
-    - Tidak efisien dalam menghadapi data dengan dimensi tinggi.
-
-5. Softmax Regression
-    Kelebihan:
-    - Menghasilkan probabilitas prediksi untuk setiap kelas.
-    - Dapat digunakan untuk klasifikasi multikelas.
-    - Memiliki interpretasi yang jelas dan dapat diinterpretasikan sebagai model regresi logistik multikelas.
-    
-    Kekurangan:
-    - Tidak efektif untuk data dengan banyak fitur yang berkorelasi.
-    - Tidak tahan terhadap nilai yang ekstrim atau pencilan (outliers).
-
-6. Linear SVC
-    Kelebihan:
-    - Efektif dalam menghadapi data dengan banyak fitur.
-    - Dapat digunakan untuk klasifikasi biner dan multikelas.
-    - Memiliki toleransi terhadap outliers.
-    
-    Kekurangan:
-    -Memerlukan pemilihan parameter C (penalty parameter) yang optimal.
-    - Tidak efektif jika terdapat banyak data noise atau data yang tumpang tindih.
-
-7. SVC
-    Kelebihan:
-    - Efektif dalam menangani data dengan banyak fitur.
-    - Dapat menghasilkan solusi yang optimal dalam ruang fitur yang tinggi.
-    - Tahan terhadap overfitting.
-    
-    Kekurangan:
-    - Memerlukan pemilihan parameter kernel yang tepat.
-    - Memerlukan waktu komputasi yang lama untuk dataset yang besar.
-    - Kurang efisien dalam menangani data yang tidak seimbang.
-
-8. Percepton
-    Kelebihan:
-    - Sederhana dan cepat dalam pelatihan.
-    - Efektif untuk data yang linier terpisah.
-    
-    Kekurangan:
-    - Tidak mampu menangani data yang tidak linier terpisah.
-    - Rentan terhadap overfitting jika dataset tidak linier terpisah.
-
-9. SGD
-    Kelebihan:
-    - Efisien dalam memproses dataset besar.
-    - Dapat digunakan untuk klasifikasi dan regresi.
-    - Memungkinkan pembaruan parameter secara iteratif.
-    
-    Kekurangan:
-    - Memerlukan tuning parameter yang tepat.
-    - Rentan terhadap konvergensi ke titik terjebak jika learning rate tidak sesuai.
-
-10. XGB
+      
+2. XGB
     Kelebihan:
     - Menghasilkan model yang sangat akurat.
     - Efektif dalam menangani data dengan banyak fitur.
-    - Menggunakan teknik ensemble boosting untuk mengurangi overfitting.
-    
-    Kekurangan:
-    - Memerlukan waktu komputasi yang lama untuk pelatihan dan prediksi.
-    - Rentan terhadap overfitting jika parameter tidak diatur dengan baik.
-
-11. Adaboost
-    Kelebihan:
-    - Efektif dalam meningkatkan kinerja model yang lemah.
-    - Mampu menangani data dengan banyak fitur.
-    - Dapat digunakan untuk klasifikasi dan regresi.
-    
-    Kekurangan:
-    - Rentan terhadap noise dan data pencilan.
-    - Memerlukan waktu komputasi yang lama untuk pelatihan.
-
-12. Gradient Boosting
-    Kelebihan:
-    - Menghasilkan model yang sangat akurat.
-    - Mampu menangani data dengan banyak fitur.
     - Menggunakan teknik ensemble boosting untuk mengurangi overfitting.
     
     Kekurangan:
